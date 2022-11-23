@@ -1,6 +1,7 @@
 import React, { createContext, useReducer} from "react";
 import tasksReducer, { TASKS_INITIAL_STATE } from "./tasks.reducer";
 import tasksTypes from "./tasks.types";
+
 export const TasksContext = createContext({
     ...TASKS_INITIAL_STATE
 });
@@ -15,10 +16,17 @@ const TasksProvider = ({children}) => {
             payload: task
         })
     }
+    const removeTask = taskId => {
+        dispatch({
+            type: tasksTypes.REMOVE_TASK,
+            payload: taskId
+        })
+    }
     return(
         <TasksContext.Provider value={{
             tasks,
-            createTask 
+            createTask,
+            removeTask 
         }}>
             {children}
         </TasksContext.Provider>

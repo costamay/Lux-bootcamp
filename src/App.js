@@ -6,15 +6,16 @@ import { TasksContext } from './Providers/Tasks/tasks.provider'
 
 
 function App() {
-  const { tasks } = useContext(TasksContext)
-  
+  const { tasks, removeTask } = useContext(TasksContext)
   const [taskList, setTaskList] = useState(tasks)
 
   function handleDelete(id){
-  let remTasks = taskList.filter(task=> task.id !== id)
-  setTaskList(remTasks)
-
+  // let remTasks = taskList.filter(task=> task.id !== id)
+  // setTaskList(remTasks)
+   removeTask(id)
+    
   }
+
   return (
     <div className="App">
       <CreateList setTaskList= {setTaskList}/>

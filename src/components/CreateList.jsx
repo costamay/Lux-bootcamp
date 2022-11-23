@@ -2,15 +2,13 @@ import React from 'react'
 import { useState, useContext } from 'react'
 import { TasksContext } from '../Providers/Tasks/tasks.provider';
 
-const INITIAL_STATE = {
-    title: '',
-}
 function CreateList({setTaskList}) {
     const { createTask } = useContext(TasksContext)
     const [taskTitle, setTaskTitle] = useState(' ')
     
     const handleInput = (e)=>{
         if(!e) return;
+
         setTaskTitle(e.target.value)
 
     }
@@ -28,7 +26,7 @@ function CreateList({setTaskList}) {
         console.log(newTask)
         createTask(newTask)
         // setTaskList(prev => [newTask,...prev] )
-        
+        setTaskTitle(" ")
     }
   return (
     <div>

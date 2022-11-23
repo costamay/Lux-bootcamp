@@ -1,4 +1,5 @@
 import tasksTypes from "./tasks.types";
+import { removeFromArray } from "./posts.utils";
 
 export const TASKS_INITIAL_STATE = {
     tasks: [
@@ -8,7 +9,8 @@ export const TASKS_INITIAL_STATE = {
         }
     ]
 }
-const tasksReducer = (state, action) => {
+const tasksReducer = (state = TASKS_INITIAL_STATE, action) => {
+    
     switch(action.type){
         case tasksTypes.CREATE_TASK:
             return  {
@@ -16,8 +18,15 @@ const tasksReducer = (state, action) => {
                 tasks: [
                     action.payload,
                     ...state.tasks
+                   
                 ]
             };
+        case tasksTypes.REMOVE_TASK:
+            const newTaskList = state.tasks.filter((task) => task.id !== action.payload)
+            return{
+                ...state,
+                tasks: newTaskList
+            }
         default:
             return state
     }

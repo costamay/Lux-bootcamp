@@ -1,7 +1,6 @@
 import React from 'react'
 
 function DisplayList({list , handleDelete}) {
-    console.log(list)
     
   return (
    <>
