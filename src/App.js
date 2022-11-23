@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CreateList from "./components/CreateList";
 import DisplayList from "./components/DisplayList";
 import './App.css'
+import { TasksContext } from './Providers/Tasks/tasks.provider'
 
 
 function App() {
-  const [taskList, setTaskList] = useState([{title: 'Task 1', id:'2'}])
+  const { tasks } = useContext(TasksContext)
+  
+  const [taskList, setTaskList] = useState(tasks)
 
   function handleDelete(id){
   let remTasks = taskList.filter(task=> task.id !== id)
