@@ -9,7 +9,7 @@ export const TASKS_INITIAL_STATE = {
         }
     ]
 }
-const tasksReducer = (state = TASKS_INITIAL_STATE, action) => {
+const tasksReducer = (state, action) => {
     
     switch(action.type){
         case tasksTypes.CREATE_TASK:
